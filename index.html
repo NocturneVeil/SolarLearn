@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar-System</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            color: white;
+            font-family: sans-serif;
+            z-index: 1;
+            max-width: 250px;
+        }
+
+        #controls label 
+        {
+            display: inline-block;
+            width: 80px;
+        }
+        #controls input[type="range"] 
+        {
+            width: 120px;
+        }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.module.js"}
+    }
+  </script>
+</head>
+
+<body>
+
+    <div id="controls">
+        <h3>Adjust Orbital Speeds</h3>
+    <!-- Sliders and button are added via JavaScript -->
+        <button id="toggleAnimation" style="margin-top:10px;">Pause</button>
+        <h3>Made By : Prathamesh</h3>
+    </div>
+
+    <Script type="module" src="solar-system.js"></Script>
+    
+</body>
+
+</html>
