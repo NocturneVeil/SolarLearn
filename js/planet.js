@@ -48,7 +48,12 @@ export function createPlanets(scene) {
         // MATERIAL
         const material = new THREE.MeshStandardMaterial({
 
-            map: textureLoader.load(`../textures/${planet.texture}`)
+            map: textureLoader.load(`../textures/${planet.texture}`),
+
+            normalMap: textureLoader.load(`../normal-map/${planet.name.toLowerCase()}_normal.webp`),
+
+            roughness: 1,
+            metalness: 0
 
         })
 

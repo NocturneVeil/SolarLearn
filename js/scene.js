@@ -68,7 +68,7 @@ controls.enableDamping = true
 const ambientLight = new THREE.AmbientLight(0xffffff,0.25)
 scene.add(ambientLight)
 // SUN LIGHT
-const sunLight = new THREE.PointLight(0xffffff, 10.0, 1000)
+const sunLight = new THREE.PointLight(0xffffff, 150.0, 10000)
 sunLight.position.set(0,0,0)
 scene.add(sunLight)
 
