@@ -1,17 +1,19 @@
 import * as THREE from "https://esm.sh/three@0.160.0"
 
-export function createPlanets(scene) {
+export function createPlanets(scene, loadingManager) {
 
-    const textureLoader = new THREE.TextureLoader()
+    const textureLoader = new THREE.TextureLoader(loadingManager)
 
     const planetGroup = []
 
 
     // SUN
-    const sunGeometry = new THREE.SphereGeometry(3, 32, 32)
+    const sunGeometry = new THREE.SphereGeometry(4, 34, 34)
 
-    const sunMaterial = new THREE.MeshBasicMaterial({
-        map: textureLoader.load('../textures/2k_sun.webp')
+    const sunMaterial = new THREE.MeshStandardMaterial({
+        map: textureLoader.load('./textures/2k_sun.webp'),
+        emissive: 0xffcc66,
+        emissiveIntensity: 1
     })
 
     const sun = new THREE.Mesh(sunGeometry, sunMaterial)
@@ -22,14 +24,14 @@ export function createPlanets(scene) {
     // PLANET DATA
     const planetData = [
 
-        { name: 'Mercury', size: 0.4, distance: 6, speed: 0.02, texture: 'mercury.webp' },
-        { name: 'Venus', size: 0.9, distance: 9, speed: 0.015, texture: 'venus.webp' },
-        { name: 'Earth', size: 1, distance: 12, speed: 0.01, texture: 'earth.webp' },
-        { name: 'Mars', size: 0.7, distance: 15, speed: 0.008, texture: 'mars.webp' },
-        { name: 'Jupiter', size: 2, distance: 20, speed: 0.006, texture: 'jupiter.webp' },
-        { name: 'Saturn', size: 1.7, distance: 25, speed: 0.005, texture: 'saturn.webp' },
-        { name: 'Uranus', size: 1.4, distance: 30, speed: 0.004, texture: 'uranus.webp' },
-        { name: 'Neptune', size: 1.3, distance: 35, speed: 0.003, texture: 'neptune.webp' }
+        { name: 'Mercury', size: 0.5, distance:10,speed: 0.004, texture: 'mercury.webp' },
+        { name: 'Venus', size: 1.0, distance: 14, speed: 0.003, texture: 'venus.webp' },
+        { name: 'Earth', size: 1.0, distance: 18, speed: 0.002, texture: 'earth.webp' },
+        { name: 'Mars', size: 0.8, distance: 22, speed: 0.0016, texture: 'mars.webp' },
+        { name: 'Jupiter', size: 2.1, distance: 32, speed: 0.0009, texture: 'jupiter.webp' },
+        { name: 'Saturn', size: 1.8, distance: 44, speed: 0.0004, texture: 'saturn.webp' },
+        { name: 'Uranus', size: 1.5, distance: 58, speed: 0.0004, texture: 'uranus.webp' },
+        { name: 'Neptune', size: 1.4, distance: 72, speed: 0.0003, texture: 'neptune.webp' }
 
     ]
 
@@ -48,9 +50,9 @@ export function createPlanets(scene) {
         // MATERIAL
         const material = new THREE.MeshStandardMaterial({
 
-            map: textureLoader.load(`../textures/${planet.texture}`),
+            map: textureLoader.load(`./textures/${planet.texture}`),
 
-            normalMap: textureLoader.load(`../normal-map/${planet.name.toLowerCase()}_normal.webp`),
+            normalMap: textureLoader.load(`./normal-map/${planet.name.toLowerCase()}_normal.webp`),
 
             roughness: 1,
             metalness: 0
@@ -71,7 +73,7 @@ export function createPlanets(scene) {
             const cloudGeo = new THREE.SphereGeometry(planet.size * 1.02, 32, 32)
 
             const cloudMat = new THREE.MeshStandardMaterial({
-                map: textureLoader.load("../textures/2k_earth_clouds.png"),
+                map: textureLoader.load("./textures/2k_earth_clouds.png"),
                 transparent: true
             })
 
